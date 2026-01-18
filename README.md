@@ -15,6 +15,33 @@ git checkout feat/index
 git push --set-upstream origin feat/index
 ```
 
+### XAMPP/WAMP
+
+- Start the PHP server.
+- Setup the database using phpmyadmin or whatever you use.
+
+#### phpmyadmin (if using XAMPP)
+
+- Import the file from `db/club_informatique.sql` into a database
+
+### Docker
+
+- Start the docker compose container.
+
+```
+docker compose up -d
+```
+
+- Setup the database using adminer.
+
+#### adminer
+
+- Access adminer on `localhost:8080`
+- Connect using `Username:root`, `Password:mariadb`, `Database:database`
+- Go to SQL command
+- Copy paste file content from `db/init.sql`
+- Execute the SQL using the button `Execute`
+
 ## Screen
 
 ### Index

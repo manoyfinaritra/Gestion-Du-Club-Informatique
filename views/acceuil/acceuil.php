@@ -1,11 +1,19 @@
-<?php session_start();
-$nom_facebook = $_SESSION['nom_facebook'];
-if(!isset($nom_facebook)){
+<?php
+session_start();
+if (!isset($_SESSION['nom_facebook'])) {
     header("location: ../../index.php");
 }
+$nom_facebook = $_SESSION['nom_facebook'];
+
 include "../../data_php/Data.php";
 $data = new Data();
-$all_membres = $data->Select_all_members();
+if (isset($_SESSION['search_results'])) {
+    $all_membres = $_SESSION['search_results'];
+    
+    // unset($_SESSION['search_results']);
+} else {
+    $all_membres = $data->Select_all_members();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +31,8 @@ $all_membres = $data->Select_all_members();
 
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">M.info</a>
+            <a class="navbar-brand" href="#">
+                <?php echo $nom_facebook; ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -41,11 +50,10 @@ $all_membres = $data->Select_all_members();
                         <li class="nav-item">
                             <a class="nav-link active text-dark" aria-current="page" href="acceuil.php">Accueil</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="#">Deconnexion</a>
+                            <a class="nav-link text-danger" href="../../data_php/data.php?action=deconnexion"
+                                onclick=" return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Deconnexion</a>
                         </li>
 
                     </ul>
@@ -63,7 +71,7 @@ $all_membres = $data->Select_all_members();
     <div class=" container-fluid border" style=" margin-top : 70px">
         <div class="row">
             <div class="col">
-                <h1>Ajouter un membre</h1>
+                <h1 class=" text-center">Ajouter un membre</h1>
                 <?= isset($_GET['message']) ? '<p class="text-dark">' . $_GET['message'] . '</p>' : '' ?>
                 <form action="../../data_php/data.php" method="post">
 
@@ -108,9 +116,18 @@ $all_membres = $data->Select_all_members();
 
 
             <div class="col">
-                <h1>Liste des membres</h1>
+                <h1 class="text-center ">Liste des membres</h1>
                 <div class="table-responsive">
-
+                    <form action="../../data_php/data.php?action=recherche" method="post" class="d-flex mt-3"
+                        role="search">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Rechercher..."
+                            aria-label="Search" required />
+                        <button class="btn btn-success" type="submit">Rechercher</button>
+                    </form>
+                    <?php if (isset($_SESSION['search_results'])) : ?>
+                    <a href="../../views/acceuil/acceuil.php" class=" mt-3">Retour à la liste</a>
+                    <?php unset($_SESSION['search_results']); ?>
+                    <?php endif; ?>
                     <table class="table">
                         <thead>
                             <tr>

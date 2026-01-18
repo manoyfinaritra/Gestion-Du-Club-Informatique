@@ -1,4 +1,9 @@
-<?php include "../data_php/data.php";
+<?php 
+session_start();
+if(!isset($_SESSION['nom_facebook'])){
+    header("location: ../index.php");
+}
+include "../data_php/data.php";
 $id = trim(htmlspecialchars($_GET['id']));
 $data = new Data();
 $membre =$data->fetch_member_by_id($id);
@@ -44,10 +49,8 @@ $membre =$data->fetch_member_by_id($id);
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="#">Deconnexion</a>
+                            <a class="nav-link text-danger" href="../data_php/data.php?action=deconnexion"
+                                onclick=" return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Deconnexion</a>
                         </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">
@@ -111,6 +114,7 @@ $membre =$data->fetch_member_by_id($id);
                     </div>
 
                     <div class="form-group mt-3">
+                        <a href="../views/acceuil/acceuil.php" class="btn btn-secondary">Annuler</a>
                         <input type="submit" class=" btn btn-success" name="modifier" value="Modifier">
                     </div>
                 </form>

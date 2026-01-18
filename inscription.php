@@ -51,11 +51,12 @@
                             <input type="password" class="form-control mt-1" id="motdepasse" name="motdepasse"
                                 placeholder="Entrez votre mot de passe">
                         </div>
-                        <div class="form-group mt-5">
+                        <div class="form-group mt-3">
                             <button type="submit" class="btn btn-primary w-100" name="inscription">Inscription</button>
                         </div>
                         <div class="mt-1">
-                            <small class="text-white">Vous avez deja un compte? <a href="index.php">Connexion</a></small>
+                            <small class="text-white">Vous avez deja un compte? <a
+                                    href="index.php">Connexion</a></small>
                         </div>
                 </form>
             </div>

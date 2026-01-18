@@ -11,4 +11,5 @@
 List of contributors on this project.
 
 - Ryuka25 (https://github.com/Ryuka25)
+manoyfinaritra
 - manoyfinaritra(https://github.com/manoyfinaritra)

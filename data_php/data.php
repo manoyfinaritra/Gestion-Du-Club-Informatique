@@ -37,9 +37,56 @@ class Data
     }
     return false;
   }
+  public function fetch_all_members()
+  {
+    $sql = "SELECT * FROM membres";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public function Select_all_members()
+  {
+    $sql = "SELECT * FROM AddMembres";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  
+  public function supprimer($id){
+    $sql = "DELETE FROM AddMembres WHERE id = ? ";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$id]);
+  }
+  public function fetch_member_by_id($id){
+    $sql = "SELECT * FROM AddMembres WHERE id = ?";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+
+   public function insertion($nom, $prenom, $age, $email, $nom_facebook, $genre)
+    {
+        $sql = "INSERT INTO AddMembres(nom,prenom,age,email,nom_facebook,genre) VALUES (?,?,?,?,?,?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$nom, $prenom, $age, $email, $nom_facebook, $genre]);
+    }
+
+    public function update($nom, $prenom, $age, $email, $nom_facebook, $genre,$id){
+        $sql = "UPDATE AddMembres SET nom = ?, prenom = ?, age = ?, email = ?, nom_facebook = ?, genre = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$nom, $prenom, $age, $email, $nom_facebook, $genre, $id]);
+    }
 }
+
+
+
+
 $message = "";
 $data = new Data();
+$all_membres = $data->fetch_all_members();
+
 if (isset($_POST["inscription"])) {
 
   $nom = trim(htmlspecialchars($_POST["nom"]));
@@ -70,7 +117,7 @@ if (isset($_POST['connexion'])) {
     $_SESSION['age'] = $user['age'];
     $_SESSION['nom_facebook'] = $user['nom_facebook'];
     
-    header("location: ../acceuil/acceuil.php");
+    header("location: ../views/acceuil/acceuil.php");//modification de la route 
   
     exit();
   } else {
@@ -79,3 +126,57 @@ if (isset($_POST['connexion'])) {
     exit();
   }
 }
+
+
+
+
+if (isset($_POST['ajouter'])) {
+  $nom = trim(htmlspecialchars($_POST['nom']));
+  $prenom = trim(htmlspecialchars($_POST['prenom']));
+  $age = trim(htmlspecialchars($_POST['age']));
+  $email = trim(htmlspecialchars($_POST['email']));
+  $nom_facebook = trim(htmlspecialchars($_POST['nom_facebook']));
+  $genre = trim(htmlspecialchars($_POST['genre']));
+
+  $data->insertion($nom, $prenom, $age, $email, $nom_facebook, $genre);
+  $message = "Ajout réussi";
+
+  header("Location: ../views/acceuil/acceuil.php?message=".$message);
+}
+//modifier et supprimer
+if(isset($_GET['action'])){
+  if($_GET['action'] == "delete"){
+    $id = trim(htmlspecialchars($_GET['id']));
+    $data->supprimer($id);
+    $message = "suppression reussi";
+    header("Location: ../views/acceuil/acceuil.php?message=".$message);
+  }
+  if($_GET['action'] == "edit"){
+    $id = trim(htmlspecialchars($_GET['id']));
+    
+    // Récupérer les données du membre à modifier
+    $membre = $data->fetch_member_by_id($id);
+    var_dump($membre);
+    if($membre){
+      // Afficher le formulaire de modification avec les données du membre
+      header("Location: ../views/modifier.php?id=".$id);
+      exit();
+    }
+  }
+
+  
+}
+
+if(isset($_POST['modifier'])){
+    $id = trim(htmlspecialchars($_POST['id']));
+    $nom = trim(htmlentities($_POST['nom']));
+    $prenom = trim(htmlentities($_POST['prenom']));
+    $age = trim(htmlentities($_POST['age']));
+    $email = trim(htmlentities($_POST['email']));
+    $nom_facebook = trim(htmlentities($_POST['nom_facebook']));
+    $genre = trim(htmlentities($_POST['genre']));
+    // var_dump($_POST); die();
+    $data->update($nom, $prenom, $age, $email, $nom_facebook, $genre,$id);
+    $message = "Modification réussie";
+    header("Location: ../views/acceuil/acceuil.php?message=".$message);
+  }

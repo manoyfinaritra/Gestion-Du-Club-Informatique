@@ -1,19 +1,8 @@
 # Gestion Du Club Informatique
 
-<!-- TODO: DESCRIPTION DU PROJET -->
+<!-- TODO: AJOUTER UNE DESCRIPTION DU PROJET ICI -->
 
 ## Getting Started
-
-<!-- TODO: HOW TO GET STARTED FOR NEW DEV -->
-
-avant de commencer de manao an'ito commande ito:
-
-```
-git pull
-git branch feat/index
-git checkout feat/index
-git push --set-upstream origin feat/index
-```
 
 ### XAMPP/WAMP
 
@@ -41,6 +30,17 @@ docker compose up -d
 - Go to SQL command
 - Copy paste file content from `db/init.sql`
 - Execute the SQL using the button `Execute`
+
+### Development
+
+Do not forget to use your own branch to avoid conflict with other people's work.
+
+```
+git pull
+git branch feat/<NOM_DU_FEATURE>
+git checkout feat/<NOM_DU_FEATURE>
+git push --set-upstream origin feat/<NOM_DU_FEATURE>
+```
 
 ## Screen
 

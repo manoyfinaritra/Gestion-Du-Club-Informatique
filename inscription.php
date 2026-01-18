@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/icon.css">
-    <link rel="stylesheet" href="assets/css/connexion.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
 </head>
 
 <body>

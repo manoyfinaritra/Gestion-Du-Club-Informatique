@@ -70,13 +70,12 @@ if (isset($_POST['connexion'])) {
     $_SESSION['age'] = $user['age'];
     $_SESSION['nom_facebook'] = $user['nom_facebook'];
     
-    // header("Location: ../index.php?message=" . urlencode("Connexion réussie !"));
     header("location: ../acceuil/acceuil.php");
   
     exit();
   } else {
     $message = "Nom d'utilisateur ou mot de passe incorrect.";
-    header("Location: ../index.php?message=" . urlencode($message));
+    header("Location: ../connexion.php?message=" . urlencode($message));
     exit();
   }
 }

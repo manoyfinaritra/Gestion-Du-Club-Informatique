@@ -32,11 +32,6 @@ class Data
     }
     return false;
   }
-
-  public function getConnection()
-  {
-    return $this->conn;
-  }
 }
 $message = "";
 $data = new Data();
@@ -50,24 +45,12 @@ if (isset($_POST["inscription"])) {
   $mot_de_passe = trim(htmlspecialchars($_POST["motdepasse"]));
 
 
-  // Vérifier si le nom_facebook existe déjà
-  $sql = "SELECT COUNT(*) FROM membres WHERE nom_facebook = ?";
-  $stmt = $data->getConnection()->prepare($sql);
-  $stmt->execute([$nom_facebook]);
-  $count = $stmt->fetchColumn();
-
-  if ($count > 0) {
-    $message = "Ce nom Facebook existe déjà.";
-    header("Location: ../inscription.php?message=" . urlencode($message));
-    exit();
-  }
-
   // Sécurisation du mot de passe
+  // $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
   $mot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
   $data->insert($nom, $prenom, $age, $genre, $nom_facebook, $mot_de_passe);
   $message = "Inscription réussie !";
   header("Location: ../inscription.php?message=" . urlencode($message));
-  exit();
 }
 if (isset($_POST['connexion'])) {
   $nom_facebook = trim(htmlspecialchars($_POST['nom_facebook']));
@@ -77,8 +60,14 @@ if (isset($_POST['connexion'])) {
   if ($user) {
     // Connexion réussie, vous pouvez démarrer une session ou rediriger
     session_start();
-    $_SESSION['user'] = $user;
-    header("Location: ../index.php?message=" . urlencode("Connexion réussie !"));
+    $_SESSION['nom'] = $user['nom'];
+    $_SESSION['prenom'] = $user['prenom'];
+    $_SESSION['age'] = $user['age'];
+    $_SESSION['nom_facebook'] = $user['nom_facebook'];
+    
+    // header("Location: ../index.php?message=" . urlencode("Connexion réussie !"));
+    header("location: ../acceuil/acceuil.php");
+  
     exit();
   } else {
     $message = "Nom d'utilisateur ou mot de passe incorrect.";

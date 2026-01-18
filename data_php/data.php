@@ -70,7 +70,7 @@ if (isset($_POST['connexion'])) {
     $_SESSION['age'] = $user['age'];
     $_SESSION['nom_facebook'] = $user['nom_facebook'];
     
-    header("location: ../acceuil/acceuil.php");
+    header("location: ../views/acceuil/acceuil.php");//modification de la route 
   
     exit();
   } else {

@@ -4,9 +4,14 @@ class Data
   private $conn;
 
   public function __construct()
-  {
+  { 
+    $DB_HOST = getenv("DB_HOST") ?: "localhost";
+    $DB_NAME = getenv("DB_NAME") ?: "club_informatique";
+    $DB_USER = getenv("DB_USER") ?: "root";
+    $DB_PWD = getenv("DB_PWD") ?: "";
+
     try {
-      $this->conn = new PDO("mysql:host=localhost;dbname=club_informatique", "root", "");
+      $this->conn = new PDO("mysql:host=".$DB_HOST.";dbname=".$DB_NAME, $DB_USER, $DB_PWD);
       $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
       echo "Connection failed: " . $e->getMessage();

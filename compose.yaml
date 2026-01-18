@@ -1,0 +1,36 @@
+services:
+
+  server:
+    build:
+      context: .
+    ports:
+      - 9000:80
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_NAME=database
+      - DB_USER=root
+      - DB_PWD=mariadb
+
+  db:
+    image: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=mariadb
+      - MARIADB_DATABASE=database
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+volumes:
+  db-data:
+

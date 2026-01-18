@@ -6,6 +6,15 @@
 
 <!-- TODO: HOW TO GET STARTED FOR NEW DEV -->
 
+avant de commencer de manao an'ito commande ito:
+
+```
+git pull
+git branch feat/index
+git checkout feat/index
+git push --set-upstream origin feat/index
+```
+
 ## Screen
 
 ### Index

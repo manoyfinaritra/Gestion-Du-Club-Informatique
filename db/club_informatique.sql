@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : dim. 18 jan. 2026 à 16:03
+-- Généré le : dim. 18 jan. 2026 à 23:18
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.0.28
 
@@ -24,10 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membres`
+-- Structure de la table `AddMembres`
 --
 
-CREATE TABLE `membres` (
+CREATE TABLE `AddMembres` (
+  `id` int(11) NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
+  `age` int(11) NOT NULL,
+  `email` text NOT NULL,
+  `nom_facebook` text NOT NULL,
+  `genre` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
@@ -38,27 +54,19 @@ CREATE TABLE `membres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `membres`
---
-
-INSERT INTO `membres` (`id`, `nom`, `prenom`, `age`, `genre`, `nom_facebook`, `mot_de_passe`) VALUES
-(1, 'fddf', 'ffdgfdgd', '555', 'Homme', 'dfdf', 'fdfd'),
-(2, 'fddf', 'ffdgfdgd', '555', 'Homme', 'dfdf', '$2y$10$X4DF9F5WxzjYnilzY5K0e.eryaLQmR0QbwC2lxv51Sib0dBxRNNha'),
-(3, 'fdff', 'fddsf', '34', 'Homme', 'fddfd', '$2y$10$falx9j43c82KzBSzo4oiL.jUWYh.yeLM.8VUTBvRruF5vdoc59H/u'),
-(4, 'fdfddffd', 'dfdfdfsf', '766', 'Homme', 'dffsf', '$2y$10$7iwHhS197XLRuBO1LtOD1O8xYb33awJlRCz.KwNO5RA9W51KVNM3S'),
-(5, 'manoy', 'finaritra', '23', 'Homme', 'man oy', '$2y$10$kMxBIIarjEq6rkvUZTg/FetzldtLlgAxCd4zazF3jDAb7C3BSN5XC'),
-(6, 'cvc', 'bb', '55', 'Homme', 'gf', '$2y$10$ScgcL0SB1evu7BfChQp6mOqlUtr8TuHdLJmSAqQf4NUE5ZqXCav8.'),
-(7, 'dffd', 'dfd', '55', 'Homme', 'dfdf', '$2y$10$cFIwFtbknHRQ6rJLId9L6.H2bIwvNAb89JZxIYj42DD2z2OTlnE/W'),
-(8, 'cxx', 'DFH', '66', 'Homme', 'DFJFJ', '$2y$10$TyvyY/oloyoOfEhBqPGAxO9GDYWdhIQjKMlnFvQ.tP/4SkbSYDx3.');
-
---
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `membres`
+-- Index pour la table `AddMembres`
 --
-ALTER TABLE `membres`
+ALTER TABLE `AddMembres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -66,10 +74,16 @@ ALTER TABLE `membres`
 --
 
 --
--- AUTO_INCREMENT pour la table `membres`
+-- AUTO_INCREMENT pour la table `AddMembres`
 --
-ALTER TABLE `membres`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `AddMembres`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

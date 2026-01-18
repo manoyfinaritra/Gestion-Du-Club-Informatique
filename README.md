@@ -25,4 +25,5 @@
 List of contributors on this project.
 
 - Ryuka25 (https://github.com/Ryuka25)
+- RalisataRelahy(https://github.com/RalisataRelahy)
 - manoyfinaritra (https://github.com/manoyfinaritra)

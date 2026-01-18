@@ -6,6 +6,20 @@
 
 <!-- TODO: HOW TO GET STARTED FOR NEW DEV -->
 
+## Screen
+
+### Index
+
+![alt text](docs/index.png)
+
+### New member
+
+![alt text](docs/new.png)
+
+### Edit member
+
+![alt text](docs/edit.png)
+
 ## Contributors
 
 List of contributors on this project.

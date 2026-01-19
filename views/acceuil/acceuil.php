@@ -87,8 +87,8 @@ if (isset($_SESSION['search_results'])) {
                     </div>
                     <div class=" form-group">
                         <label for="age" class=" form-label">Age :</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="Entrer votre age"
-                            required>
+                        <input type="number" class="form-control" id="age" name="age" 
+                            placeholder="Entrer votre age" min="1" required>
                     </div>
                     <div class=" form-group">
                         <label for="email" class=" form-label">Email :</label>
@@ -168,6 +168,7 @@ if (isset($_SESSION['search_results'])) {
     <script src="../../assets/js/jquery.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
     <script src="../../assets/js/icon.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

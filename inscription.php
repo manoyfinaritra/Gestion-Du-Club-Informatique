@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="text" class="text-white">Age :</label>
-                        <input type="text" class="form-control mt-1" id="age" name="age" placeholder="Entrez votre âge"
+                        <input type="number" class="form-control mt-1" id="age" name="age" placeholder="Entrez votre âge"
                             required>
                     </div>
                     <div class="form-group mt-3">

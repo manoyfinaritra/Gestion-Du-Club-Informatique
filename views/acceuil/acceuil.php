@@ -5,7 +5,7 @@ if (!isset($_SESSION['nom_facebook'])) {
 }
 $nom_facebook = $_SESSION['nom_facebook'];
 
-include "../../data_php/Data.php";
+include "../../data_php/data.php";
 $data = new Data();
 if (isset($_SESSION['search_results'])) {
     $all_membres = $_SESSION['search_results'];

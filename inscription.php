@@ -27,10 +27,10 @@
                         <input type="text" class="form-control mt-1" id="prenom" name="prenom"
                             placeholder="Entrez votre prénom" required>
                     </div>
-                    <div class="form-group mt-3">
-                        <label for="text" class="text-white">Age :</label>
-                        <input type="number" class="form-control mt-1" id="age" name="age" placeholder="Entrez votre âge"
-                            required>
+                   <div class=" form-group">
+                        <label for="age" class=" form-label">Age :</label>
+                        <input type="number" class="form-control" id="age" name="age" 
+                            placeholder="Entrer votre age" min="1" required>
                     </div>
                     <div class="form-group mt-3">
                         <label for="genre" class="text-white">Genre :</label>
@@ -66,6 +66,7 @@
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/bootstrap.js"></script>
     <script src="./assets/js/icon.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -23,4 +23,5 @@ class Inscription_model
     }
     return false;
   }
+
 }

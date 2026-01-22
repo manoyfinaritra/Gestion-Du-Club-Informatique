@@ -55,4 +55,14 @@ class Acceuil_controller
         session_destroy();
         header("location:" . BASE_URL . "index.php?page=deconnexion");
     }
+    public function recherche()
+    {
+        $recherche = trim(htmlspecialchars($_POST['search']));
+        
+        $stmt = $this->db->recherche($recherche,$recherche,$recherche,$recherche);
+        
+        session_start();
+        $_SESSION["search_results"] = $stmt;
+        header("location:". BASE_URL . "index.php?page=recherche");
+    }
 }

@@ -116,15 +116,15 @@ if (isset($_SESSION['search_results'])) {
             <div class="col">
                 <h1 class="text-center ">Liste des membres</h1>
                 <div class="table-responsive">
-                    <form action="../../data_php/data.php?action=recherche" method="post" class="d-flex mt-3"
+                    <form action="<?= BASE_URL ?>index.php?action=recherche" method="post" class="d-flex mt-3"
                         role="search">
                         <input class="form-control me-2" type="search" name="search" placeholder="Rechercher..."
                             aria-label="Search" required />
                         <button class="btn btn-success" type="submit">Rechercher</button>
                     </form>
                     <?php if (isset($_SESSION['search_results'])) : ?>
-                        <a href="../../views/acceuil/acceuil.php" class=" mt-3">Retour à la liste</a>
-                        <?php unset($_SESSION['search_results']); ?>
+                    <a href="<?= BASE_URL ?>index.php?page=retour_search" class=" mt-3">Retour à la liste</a>
+                    <?php unset($_SESSION['search_results']); ?>
                     <?php endif; ?>
                     <table class="table">
                         <thead>
@@ -140,22 +140,22 @@ if (isset($_SESSION['search_results'])) {
                         </thead>
                         <tbody>
                             <?php foreach ($all_membres as $membre) : ?>
-                                <tr>
-                                    <td class=" text-capitalize"><?= $membre['nom'] ?></td>
-                                    <td class=" text-capitalize"><?= $membre['prenom'] ?></td>
-                                    <td><?= $membre['age'] ?></td>
-                                    <td><?= $membre['email'] ?></td>
-                                    <td><?= $membre['nom_facebook'] ?></td>
-                                    <td><?= $membre['genre'] ?></td>
-                                    <td>
-                                        <a href="<?= BASE_URL ?>index.php?action=edit&id=<?= $membre['id'] ?>"
-                                            class="btn btn-success"><i class="fa-solid fa-edit"></i></a>
-                                        <a href="<?= BASE_URL ?>index.php?action=delete&id=<?= $membre['id'] ?>"
-                                            class=" btn btn-danger"
-                                            onclick=" return confirm('vous voulez le supprimer ?')"><i
-                                                class="fa-solid fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class=" text-capitalize"><?= $membre['nom'] ?></td>
+                                <td class=" text-capitalize"><?= $membre['prenom'] ?></td>
+                                <td><?= $membre['age'] ?></td>
+                                <td><?= $membre['email'] ?></td>
+                                <td><?= $membre['nom_facebook'] ?></td>
+                                <td><?= $membre['genre'] ?></td>
+                                <td>
+                                    <a href="<?= BASE_URL ?>index.php?action=edit&id=<?= $membre['id'] ?>"
+                                        class="btn btn-success"><i class="fa-solid fa-edit"></i></a>
+                                    <a href="<?= BASE_URL ?>index.php?action=delete&id=<?= $membre['id'] ?>"
+                                        class=" btn btn-danger"
+                                        onclick=" return confirm('vous voulez le supprimer ?')"><i
+                                            class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

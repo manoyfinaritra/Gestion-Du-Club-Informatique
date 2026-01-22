@@ -29,6 +29,9 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == "deconnexion") {
         $data_acceuil->deconnexion();
     }
+    if ($_GET['action'] == "recherche") {
+        $data_acceuil->recherche();
+    }
 } elseif (isset($_GET['page'])) {
     if ($_GET['page'] == "inscription") {
         $message = "insertion reussi";
@@ -53,6 +56,12 @@ if (isset($_GET['action'])) {
         require_once("./view/connexion.php");
     }
     if ($_GET['page'] == "annulermodification") {
+        require_once("./view/acceuil.php");
+    }
+    if ($_GET['page'] == "recherche") {
+        require_once("./view/acceuil.php");
+    }
+    if ($_GET['page'] == "retour_search") {
         require_once("./view/acceuil.php");
     }
 } else {

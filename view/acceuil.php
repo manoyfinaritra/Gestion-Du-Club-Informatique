@@ -5,7 +5,12 @@ if (!isset($_SESSION['nom_facebook'])) {
 }
 $nom_facebook = $_SESSION['nom_facebook'];
 
+<<<<<<< HEAD:view/acceuil.php
 $data = $data_acceuil->get_membres();
+=======
+include "../../data_php/data.php";
+$data = new Data();
+>>>>>>> e02614ec8e0e934d37ff644a01148a8929636a2c:views/acceuil/acceuil.php
 if (isset($_SESSION['search_results'])) {
     $all_membres = $_SESSION['search_results'];
     // unset($_SESSION['search_results']);
@@ -86,8 +91,8 @@ if (isset($_SESSION['search_results'])) {
                     </div>
                     <div class=" form-group">
                         <label for="age" class=" form-label">Age :</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="Entrer votre age"
-                            required>
+                        <input type="number" class="form-control" id="age" name="age" 
+                            placeholder="Entrer votre age" min="1" required>
                     </div>
                     <div class=" form-group">
                         <label for="email" class=" form-label">Email :</label>
@@ -164,9 +169,16 @@ if (isset($_SESSION['search_results'])) {
             </div>
         </div>
     </div>
+<<<<<<< HEAD:view/acceuil.php
     <script src="http://localhost/club_informatique/public/js/jquery.js"></script>
     <script src="http://localhost/club_informatique/public/js/bootstrap.js"></script>
     <script src="http://localhost/club_informatique/public/js/icon.js"></script>
+=======
+    <script src="../../assets/js/jquery.js"></script>
+    <script src="../../assets/js/bootstrap.js"></script>
+    <script src="../../assets/js/icon.js"></script>
+    <script src="script.js"></script>
+>>>>>>> e02614ec8e0e934d37ff644a01148a8929636a2c:views/acceuil/acceuil.php
 </body>
 
 </html>

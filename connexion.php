@@ -7,6 +7,8 @@
     <title>Se connecter</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.css" />
     <link rel="stylesheet" href="./assets/css/icon.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/auth.css" />
 </head>
 
@@ -16,7 +18,7 @@
             <div class="col">
                 <form action="./data_php/data.php" method="post">
                     <h1 class="text-center text-white">Se connecter</h1>
-                    <?= isset($_GET['message']) ? '<p class="text-white">'.$_GET['message'].'</p>' : '' ?>
+                    <?= isset($_GET['message']) ? '<p class="text-danger">'.$_GET['message'].'</p>' : '' ?>
                     <div class="form-group mt-3">
                         <label for="nom" class="text-white">Nom d'Utilisateur</label>
                         <input type="text" class="form-control mt-1" id="nom" name="nom_facebook"
@@ -40,6 +42,8 @@
             </div>
         </div>
     </div>
+</body>
+</html>
 </body>
 
 </html>

@@ -1,13 +1,11 @@
-<?php 
+<?php
+include '../config.php';
 session_start();
-if(!isset($_SESSION['nom_facebook'])){
-    header("location: ../index.php");
+if (!isset($_SESSION['nom_facebook'])) {
+    header("location:" . BASE_URL . "index.php");
 }
-
-
-$membre =$data_acceuil->edit();
-
- ?>
+$membre = $data_acceuil->edit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +13,8 @@ $membre =$data_acceuil->edit();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modification</title>
-    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/bootstrap.css">
-    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/icon.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/icon.css">
 </head>
 
 <body>
@@ -41,15 +39,13 @@ $membre =$data_acceuil->edit();
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active text-dark" aria-current="page"
-                                href="../views/acceuil/acceuil.php">Accueil</a>
+                            <a class="nav-link active text-dark" aria-current="page" href="acceuil.php">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-danger"
-                                href="http://localhost/club_informatique/index.php?action=deconnexion"
+                            <a class="nav-link text-danger" href="<?= BASE_URL ?>index.php?action=deconnexion"
                                 onclick=" return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Deconnexion</a>
                         </li>
                     </ul>
@@ -67,8 +63,8 @@ $membre =$data_acceuil->edit();
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Modifier un membre</h1>
-                <form action="http://localhost/club_informatique/index.php?action=update" method="post"
-                    style=" max-width : 400px;" class="mx-auto">
+                <form action="<?= BASE_URL ?>index.php?action=update" method="post" style=" max-width : 400px;"
+                    class="mx-auto">
                     <input class="form-control" type="hidden" name="id" value="<?php echo $membre['id']; ?>">
                     <div class="form-group">
                         <label class="form-label" for="nom">Nom:</label>
@@ -127,8 +123,9 @@ $membre =$data_acceuil->edit();
 
 </html>
 
-<script src="http://localhost/club_informatique/public/js/bootstrap.js"></script>
-<script src="http://localhost/club_informatique/public/js/icon.js"></script>
+<script src="<?= BASE_URL ?>public/js/jquery.js"></script>
+<script src="<?= BASE_URL ?>public/js/bootstrap.js"></script>
+<script src="<?= BASE_URL ?>public/js/icon.js"></script>
 </body>
 
 </html>

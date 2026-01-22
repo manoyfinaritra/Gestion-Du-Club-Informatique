@@ -1,6 +1,8 @@
 <?php
+include "./config.php";
 include "./controller/Insription_controller.php";
 include "./controller/Acceuil_controller.php";
+const BASE_URL = "Gestion-Du-Club-Informatique/";
 $data_acceuil = new Acceuil_controller();
 $data = new Insription_controller();
 
@@ -30,13 +32,13 @@ if (isset($_GET['action'])) {
 } elseif (isset($_GET['page'])) {
     if ($_GET['page'] == "inscription") {
         $message = "insertion reussi";
-        header("location:http://localhost/club_informatique/view/inscription1.php?message=$message");
+        header("location:" . BASE_URL . "view/inscription1.php?message=$message");
     }
     if ($_GET['page'] == "connexion" && $_GET['message'] == "succes") {
         require_once("./view/acceuil.php");
     }
     if ($_GET['page'] == "connexion" && $_GET['message'] == "erreur") {
-        header("location:http://localhost/club_informatique/view/connexion.php?erreur=true");
+        header("location:" . BASE_URL . "view/connexion.php?erreur=true");
     }
     if ($_GET['page'] == "ajout_membres") {
         require_once("./view/acceuil.php");

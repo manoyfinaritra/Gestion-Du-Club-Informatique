@@ -1,3 +1,4 @@
+<?php include '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S'inscrire</title>
-    <link rel="stylesheet" href="../public/css/bootstrap.css">
-    <link rel="stylesheet" href="../public/css/icon.css">
-    <link rel="stylesheet" href="../public/css/auth.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/icon.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/auth.css">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
         <div class="row">
             <div class="col">
 
-                <form action="../index.php?action=insert" method="post">
+                <form action="<?= BASE_URL ?>index.php?action=insert" method="post">
                     <h1 class="text-center text-white">S'inscrire</h1>
                     <?= isset($_GET['message']) ? '<p class="text-white">' . $_GET['message'] . '</p>' : '' ?>
                     <div class="form-group mt-3">
@@ -64,9 +65,9 @@
         </div>
     </div>
 
-    <script src="../public/js/jquery.js"></script>
-    <script src="../public/js/bootstrap.js"></script>
-    <script src="../public/js/icon.js"></script>
+    <script src="<?= BASE_URL ?>public/js/jquery.js"></script>
+    <script src="<?= BASE_URL ?>public/js/bootstrap.js"></script>
+    <script src="<?= BASE_URL ?>public/js/icon.js"></script>
 </body>
 
 </html>

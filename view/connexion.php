@@ -1,3 +1,4 @@
+<?php include '../config.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -5,20 +6,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Se connecter</title>
-    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/bootstrap.css" />
-    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/icon.css" />
-    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/auth.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/icon.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>public/css/auth.css" />
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="http://localhost/club_informatique/index.php?action=connexion" method="post">
+                <form action="<?= BASE_URL ?>index.php?action=connexion" method="post">
                     <h1 class="text-center text-white">Se connecter</h1>
-                    <?php 
-                    if (isset($_GET['erreur']) && $_GET['erreur'] == true ) : ?>
-                    <i class=" text-danger">mot de passe incorect</i> <?php endif ?> <div class="form-group mt-3">
+                    <?php
+                    if (isset($_GET['erreur']) && $_GET['erreur'] == true) : ?>
+                        <i class=" text-danger">mot de passe incorect</i> <?php endif ?> <div class="form-group mt-3">
                         <label for="nom" class="text-white">Nom d'Utilisateur</label>
                         <input type="text" class="form-control mt-1" id="nom" name="nom_facebook"
                             placeholder="Entrez votre nom d'utilisateur" required />
@@ -34,7 +35,7 @@
                     <div class="mt-1">
                         <small class="text-white">
                             Vous n'avez pas de compte?
-                            <a href="http://localhost/club_informatique/view/inscription1.php">Inscrivez-vous
+                            <a href="<?= BASE_URL ?>view/inscription1.php">Inscrivez-vous
                                 ici</a>
                         </small>
                     </div>

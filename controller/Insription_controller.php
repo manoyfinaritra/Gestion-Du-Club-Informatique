@@ -1,4 +1,5 @@
 <?php
+include "../config.php";
 include "./model/Inscription_model.php";
 class Insription_controller
 {
@@ -18,7 +19,7 @@ class Insription_controller
         $motdepasse = trim(htmlspecialchars($_POST['motdepasse']));
         $mot_de_passe = password_hash($motdepasse, PASSWORD_DEFAULT);
         $this->db->insert($nom, $prenom, $age, $genre, $nom_facebook, $mot_de_passe);
-        header("location:" . "http://localhost/club_informatique/index.php?page=inscription");
+        header("location:" . BASE_URL . "index.php?page=inscription");
     }
 
     public function verify_connexion()
@@ -32,9 +33,9 @@ class Insription_controller
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
             $_SESSION['nom_facebook'] = $user['nom_facebook'];
-            header("location:http://localhost/club_informatique/index.php?page=connexion&message=succes");
+            header("location:" . BASE_URL . "index.php?page=connexion&message=succes");
         } else {
-            header("location:http://localhost/club_informatique/index.php?page=connexion&message=erreur");
+            header("location:" . BASE_URL . "index.php?page=connexion&message=erreur");
         }
     }
 }

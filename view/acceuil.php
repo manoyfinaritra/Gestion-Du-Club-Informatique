@@ -1,18 +1,16 @@
 <?php
 session_start();
 if (!isset($_SESSION['nom_facebook'])) {
-    header("location: ../../index.php");
+    header("location:http://localhost/club_informatique/index.php");
 }
 $nom_facebook = $_SESSION['nom_facebook'];
 
-include "../../data_php/Data.php";
-$data = new Data();
+$data = $data_acceuil->get_membres();
 if (isset($_SESSION['search_results'])) {
     $all_membres = $_SESSION['search_results'];
-    
     // unset($_SESSION['search_results']);
 } else {
-    $all_membres = $data->Select_all_members();
+    $all_membres = $data_acceuil->get_membres();
 }
 ?>
 <!DOCTYPE html>
@@ -22,9 +20,9 @@ if (isset($_SESSION['search_results'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/css/icon.css">
-    <link rel="stylesheet" href="../../assets/css/acceuil.css">
+    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/bootstrap.css">
+    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/icon.css">
+    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/acceuil.css">
 </head>
 
 <body>
@@ -52,7 +50,8 @@ if (isset($_SESSION['search_results'])) {
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="../../data_php/data.php?action=deconnexion"
+                            <a class="nav-link text-danger"
+                                href="http://localhost/club_informatique/index.php?action=deconnexion"
                                 onclick=" return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Deconnexion</a>
                         </li>
 
@@ -73,7 +72,7 @@ if (isset($_SESSION['search_results'])) {
             <div class="col">
                 <h1 class=" text-center">Ajouter un membre</h1>
                 <?= isset($_GET['message']) ? '<p class="text-dark">' . $_GET['message'] . '</p>' : '' ?>
-                <form action="../../data_php/data.php" method="post">
+                <form action="http://localhost/club_informatique/index.php?action=insert_membres" method="post">
 
                     <div class=" form-group">
                         <label for="nom" class=" form-label">Nom :</label>
@@ -150,9 +149,9 @@ if (isset($_SESSION['search_results'])) {
                                 <td><?= $membre['nom_facebook'] ?></td>
                                 <td><?= $membre['genre'] ?></td>
                                 <td>
-                                    <a href="../../data_php/data.php?action=edit&id=<?= $membre['id'] ?>"
+                                    <a href="http://localhost/club_informatique/index.php?action=edit&id=<?= $membre['id'] ?>"
                                         class="btn btn-success"><i class="fa-solid fa-edit"></i></a>
-                                    <a href="../../data_php/data.php?action=delete&id=<?= $membre['id'] ?>"
+                                    <a href="http://localhost/club_informatique/index.php?action=delete&id=<?= $membre['id'] ?>"
                                         class=" btn btn-danger"
                                         onclick=" return confirm('vous voulez le supprimer ?')"><i
                                             class="fa-solid fa-trash"></i></a>
@@ -165,9 +164,9 @@ if (isset($_SESSION['search_results'])) {
             </div>
         </div>
     </div>
-    <script src="../../assets/js/jquery.js"></script>
-    <script src="../../assets/js/bootstrap.js"></script>
-    <script src="../../assets/js/icon.js"></script>
+    <script src="http://localhost/club_informatique/public/js/jquery.js"></script>
+    <script src="http://localhost/club_informatique/public/js/bootstrap.js"></script>
+    <script src="http://localhost/club_informatique/public/js/icon.js"></script>
 </body>
 
 </html>

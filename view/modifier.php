@@ -3,10 +3,9 @@ session_start();
 if(!isset($_SESSION['nom_facebook'])){
     header("location: ../index.php");
 }
-include "../data_php/data.php";
-$id = trim(htmlspecialchars($_GET['id']));
-$data = new Data();
-$membre =$data->fetch_member_by_id($id);
+
+
+$membre =$data_acceuil->edit();
 
  ?>
 <!DOCTYPE html>
@@ -16,8 +15,8 @@ $membre =$data->fetch_member_by_id($id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modification</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/icon.css">
+    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/bootstrap.css">
+    <link rel="stylesheet" href="http://localhost/club_informatique/public/css/icon.css">
 </head>
 
 <body>
@@ -49,7 +48,8 @@ $membre =$data->fetch_member_by_id($id);
                             <a class="nav-link text-dark" href="#">Link</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="../data_php/data.php?action=deconnexion"
+                            <a class="nav-link text-danger"
+                                href="http://localhost/club_informatique/index.php?action=deconnexion"
                                 onclick=" return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Deconnexion</a>
                         </li>
                     </ul>
@@ -67,7 +67,8 @@ $membre =$data->fetch_member_by_id($id);
         <div class="row">
             <div class="col">
                 <h1 class="text-center">Modifier un membre</h1>
-                <form action="../data_php/data.php" method="post" style=" max-width : 400px;" class="mx-auto">
+                <form action="http://localhost/club_informatique/index.php?action=update" method="post"
+                    style=" max-width : 400px;" class="mx-auto">
                     <input class="form-control" type="hidden" name="id" value="<?php echo $membre['id']; ?>">
                     <div class="form-group">
                         <label class="form-label" for="nom">Nom:</label>
@@ -114,7 +115,8 @@ $membre =$data->fetch_member_by_id($id);
                     </div>
 
                     <div class="form-group mt-3">
-                        <a href="../views/acceuil/acceuil.php" class="btn btn-secondary">Annuler</a>
+                        <a href="http://localhost/club_informatique/index.php?page=annulermodification"
+                            class="btn btn-secondary">Annuler</a>
                         <input type="submit" class=" btn btn-success" name="modifier" value="Modifier">
                     </div>
                 </form>
@@ -125,8 +127,8 @@ $membre =$data->fetch_member_by_id($id);
 
 </html>
 
-<script src="../assets/js/bootstrap.js"></script>
-<script src="../assets/js/icon.js"></script>
+<script src="http://localhost/club_informatique/public/js/bootstrap.js"></script>
+<script src="http://localhost/club_informatique/public/js/icon.js"></script>
 </body>
 
 </html>
